@@ -2,6 +2,7 @@ package com.savy.Adv.controllers;
 
 import com.savy.Adv.dto.Client;
 import com.savy.Adv.repositories.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,8 @@ import java.util.List;
 @RequestMapping("/clients")
 public class ClientsController {
 
-    private final ClientRepository clientRepository;
+   @Autowired
+   private final ClientRepository clientRepository;
 
     public ClientsController(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
