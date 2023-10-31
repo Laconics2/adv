@@ -1,7 +1,7 @@
 package com.savy.Adv.controllers;
 
 import com.savy.Adv.dto.Client;
-import com.savy.Adv.repositories.ClientRepository;
+import com.savy.Adv.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,41 +15,41 @@ import java.util.List;
 public class ClientsController {
 
    @Autowired
-   private final ClientRepository clientRepository;
+   private final ClientService clientService;
 
-    public ClientsController(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+    public ClientsController(ClientService clientService) {
+        this.clientService = clientService;
     }
 
     @GetMapping
     public List<Client> getClients() {
-        return clientRepository.findAll();
+        return clientService.getAllClients();
     }
 
     @GetMapping("/{id}")
     public Client getClient(@PathVariable Long id) {
-        return clientRepository.findById(id).orElseThrow(RuntimeException::new);
+        return clientService.getClientById(id);
     }
 
     @PostMapping
-    public ResponseEntity createClient(@RequestBody Client client) throws URISyntaxException {
-        Client savedClient = clientRepository.save(client);
-        return ResponseEntity.created(new URI("/clients/" + savedClient.getId())).body(savedClient);
+    public ResponseEntity<Object> createClient(@RequestBody Client client) throws URISyntaxException {
+        clientService.saveOrUpdate(client);
+        return ResponseEntity.created(new URI("/clients/" + client.getId())).body(client);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updateClient(@PathVariable Long id, @RequestBody Client client) {
-        Client currentClient = clientRepository.findById(id).orElseThrow(RuntimeException::new);
+    public ResponseEntity<Object> updateClient(@PathVariable Long id, @RequestBody Client client) {
+        Client currentClient = clientService.getClientById(id);
         currentClient.setName(client.getName());
         currentClient.setEmail(client.getEmail());
-        currentClient = clientRepository.save(client);
+        clientService.saveOrUpdate(client);
 
         return ResponseEntity.ok(currentClient);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteClient(@PathVariable Long id) {
-        clientRepository.deleteById(id);
+    public ResponseEntity<Object> deleteClient(@PathVariable Long id) {
+        clientService.delete(id);
         return ResponseEntity.ok().build();
     }
 }
