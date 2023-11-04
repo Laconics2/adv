@@ -2,6 +2,8 @@ package com.savy.Adv.services;
 
 import com.savy.Adv.dto.Client;
 import com.savy.Adv.repositories.ClientRepository;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,9 @@ import java.util.List;
 
 @Service
 public class ClientService {
+
+    @PersistenceContext
+    EntityManager entityManager;
     @Autowired
     private final ClientRepository clientRepository;
     public ClientService( ClientRepository clientRepository1) {
