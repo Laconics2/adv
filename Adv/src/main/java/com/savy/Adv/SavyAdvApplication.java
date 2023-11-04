@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
 @EnableConfigurationProperties(ConfigProperties.class)
-@EnableJpaRepositories
 public class SavyAdvApplication {
 
 	public static void main(String[] args) {

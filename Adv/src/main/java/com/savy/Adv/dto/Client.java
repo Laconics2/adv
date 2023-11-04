@@ -1,9 +1,8 @@
 package com.savy.Adv.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 
 @Getter
@@ -13,6 +12,16 @@ import org.springframework.data.annotation.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client {
+
+    @PersistenceContext
+    @Autowired
+    EntityManager em;
+
+    public void persist(Object obj) {
+
+        em.persist(obj);
+
+    }
 
     @Id
     @GeneratedValue

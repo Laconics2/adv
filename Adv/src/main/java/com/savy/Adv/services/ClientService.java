@@ -14,6 +14,9 @@ import java.util.List;
 public class ClientService {
 
     @Autowired
+    EntityManager entityManager;
+
+    @Autowired
     private final ClientRepository clientRepository;
     public ClientService( ClientRepository clientRepository1) {
 
