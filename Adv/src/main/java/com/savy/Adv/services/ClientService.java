@@ -13,8 +13,6 @@ import java.util.List;
 @Service
 public class ClientService {
 
-    @PersistenceContext
-    EntityManager entityManager;
     @Autowired
     private final ClientRepository clientRepository;
     public ClientService( ClientRepository clientRepository1) {
