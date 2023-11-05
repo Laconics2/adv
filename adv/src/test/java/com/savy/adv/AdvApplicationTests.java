@@ -1,10 +1,10 @@
-package com.savy.Adv;
+package com.savy.adv;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SavyAdvApplicationTests {
+class AdvApplicationTests {
 
 	@Test
 	void contextLoads() {
