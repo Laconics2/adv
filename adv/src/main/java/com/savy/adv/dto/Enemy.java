@@ -8,10 +8,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document("enemycharacters")
 public class Enemy extends Entity{
     @Setter
-    private String elementClass;
+    private EnemyAttribute enemyAttribute;
 
-    public Enemy(String id, String name, int healthPoints, int powerLevel, String playerClass){
+    public Enemy(String id, String name, int healthPoints, int powerLevel, EnemyAttribute enemyAttribute){
         super(id, name, healthPoints, powerLevel);
-        this.elementClass = playerClass;
+        this.enemyAttribute = enemyAttribute;
     }
 }
