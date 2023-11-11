@@ -11,7 +11,7 @@ public class CharacterControllerTest {
 
     @BeforeAll
     protected void setup() {
-        
+
     }
 
     @Test
