@@ -1,6 +1,6 @@
 package com.savy.adv.dto;
 
-public enum PlayerClass {
+public enum CharacterClass {
     MAGE,
     CLERIC,
     BRAWLER,
